@@ -1,0 +1,36 @@
+{
+  "name": "review-notes",
+  "displayName": "Review Notes",
+  "description": "Select code, add a review comment, and collect all comments in one Markdown file grouped by file.",
+  "version": "0.1.0",
+  "publisher": "local",
+  "engines": { "vscode": "^1.80.0" },
+  "main": "./extension.js",
+  "activationEvents": [],
+  "categories": ["Other"],
+  "contributes": {
+    "commands": [
+      { "command": "reviewNotes.addComment", "title": "Review Notes: Add Comment on Selection" },
+      { "command": "reviewNotes.openFile", "title": "Review Notes: Open Comments File" },
+      { "command": "reviewNotes.clear", "title": "Review Notes: Clear All Comments" }
+    ],
+    "keybindings": [
+      { "command": "reviewNotes.addComment", "key": "ctrl+alt+c", "mac": "cmd+alt+c", "when": "editorHasSelection" }
+    ],
+    "menus": {
+      "editor/context": [
+        { "command": "reviewNotes.addComment", "when": "editorHasSelection", "group": "navigation" }
+      ]
+    },
+    "configuration": {
+      "title": "Review Notes",
+      "properties": {
+        "reviewNotes.outputFile": {
+          "type": "string",
+          "default": "REVIEW_COMMENTS.md",
+          "description": "Path of the comments file, relative to the workspace root."
+        }
+      }
+    }
+  }
+}
